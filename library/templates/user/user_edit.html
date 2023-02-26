@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ title }}{% endblock %}
+
+{% block content %}
+<H1> <center>Edit user </center></H1>
+<form method="post">
+    {% csrf_token %}
+    <input type="text" placeholder="firstname" name="first_name" class="form-control" value="{{form.first_name.value}}"><br>
+    <input type="text" placeholder="lastname" name="last_name" value="{{form.last_name.value}}" class="form-control"><br>
+    <input type="text" placeholder="middlename" name="middle_name" value="{{form.middle_name.value}}" class="form-control"><br>
+    <input type="email" placeholder="email" name="email" value="{{form.email.value}}" class="form-control" ><br>
+    <span>{{error}}<br></span>
+     <button class="w-100 btn btn-lg btn-primary" type="submit">Save</button>
+</form>
+{% endblock %}

@@ -1,0 +1,32 @@
+{%extends 'base.html'%}
+
+{% block content %}
+<h2> <center>My orders</center></h2>
+    <table class="table bg-light">
+        <thead class="thead-dark">
+        <tr>
+            <th scope="col">Book</th>
+            <th scope="col">Created date</th>
+            <th scope="col">Planed date</th>
+            <th scope="col"></th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for element in data %}
+            <tr>
+                <td width="500">{{ element.book.name }}</td>
+                <td width="500">{{ element.created_at }}</td>
+                <td width="500">{{ element.plated_end_at }}</td>
+                <td>
+                    <a class="btn btn-outline-info"  href="{% url 'book_info' element.id %}">View</a>
+                </td>
+                {% if user.is_staff %}
+                <td>
+                    <a class="btn btn-outline-info"  href="{% url 'edit_order' element.id %}">Edit</a>
+                </td>
+                {% endif %}
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock content %}

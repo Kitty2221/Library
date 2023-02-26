@@ -1,0 +1,39 @@
+{% extends "base.html" %} }
+
+{% block content %}
+<h2> <center>Users</center></h2>
+    <a class="btn btn-success"  href="{% url 'register'%}">New user</a>
+    <hr>
+    <table class="table bg-light">
+        <thead class="thead-dark">
+        <tr>
+            <th scope="col">Last name</th>
+            <th scope="col">First name</th>
+            <th scope="col">Middle name</th>
+            <th scope="col">Email</th>
+            <th scope="col">Role</th>
+            <th scope="col">Is active</th>
+            <th style="text-align: center" scope="col"></th>
+            <th style="text-align: center" scope="col"></th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for element in users %}
+            <tr>
+                <td>
+                    <a class="btn btn-info"  href="{% url 'user_info' element.id %}">{{ element.last_name }}</a>
+                </td>
+                <td>{{ element.first_name }}</td>
+                <td>{{ element.middle_name }}</td>
+                <td>{{ element.email }}</td>
+                <td>{{ element.get_role_name }}</td>
+                <td>{{ element.is_active }}</td>
+                <td>
+                    <a class="btn btn-danger"  href="{% url 'delete_user' element.id %}">Delete</a>
+                </td>
+            </tr>
+
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock content %}

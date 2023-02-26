@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% load static %}
+{% block content %}
+<div class="container">
+    <h1 class="text-center logo my-4">
+        <a href="{% url 'home' %}">Library</a>
+    </h1>
+    <div class="row justify-content-center">
+        <div class="col-lg-8 col-md-10 col-sm-12">
+            <div class="card">
+                <div class="card-body">
+                    <h3 class="text-center">Sign up</h3>
+                    <form method="post" autocomplete="off" novalidate>
+                        {% csrf_token %}
+
+                        {% for field in data %}
+                        <p>
+                            {{ field.label }}
+                            {{ field }}
+                            {% for error in field.errors %}
+                        <p>
+                            {{ error }}
+                        </p>
+                        {% endfor %}
+                        </p>
+                        {% endfor %}
+
+                        <button class="w-100 btn btn-lg btn-primary" type="submit">Sign up</button>
+                        <div class="card-footer text-muted text-center">
+                            Already have an account? <a href="{% url 'login' %}">Log in</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock content %}

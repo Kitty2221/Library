@@ -1,0 +1,25 @@
+{% extends "base.html" %} }
+
+{% block content %}
+    <h2>Author</h2>
+    <table class="table bg-light">
+        <tr>
+            <th scope="row">Name</th>
+            <td>{{ author.name }}</td>
+        </tr>
+        <tr>
+            <th scope="row">Surname</th>
+            <td>{{ author.surname }}</td>
+        </tr>
+        <tr>
+            <th scope="row">Patronymic</th>
+            <td>{{ author.patronymic }}</td>
+        </tr>
+
+    </table>
+    <a class="btn btn-primary" href="{% url 'all_author' %}">Back</a>
+    <a class="btn btn-warning" href="{% url 'update_author' author.id %}">Update</a>
+    <a class="btn btn-danger" href="{% url 'delete_author' author.id %}">Delete</a>
+
+
+{% endblock content %}

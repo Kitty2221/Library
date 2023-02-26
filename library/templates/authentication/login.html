@@ -1,0 +1,46 @@
+{%extends 'base.html'%}
+
+{% block content %}
+<section class="vh-100 gradient-custom">
+    <div class="container py-10 h-100">
+            <h1 class="text-center logo my-4">
+                <a href="{% url 'home' %}">Library</a>
+            </h1>
+            <div class="row justify-content-center align-items-center h-100">
+                <div class="col-12 col-lg-9 col-xl-7">
+                    <div class="card shadow-2-strong card-registration" style="border-radius: 15px;">
+                        <div class="card-body p-4 p-md-5">
+                            <h3 class="mb-4 pb-2 pb-md-0 mb-md-4">Log In</h3>
+                            <form action="" method="POST">
+                                {% csrf_token %}
+                                <div class="row">
+                                    <div class="col-md-10 mb-2">
+                                        <div class="form-outline">
+                                            <input type="email" id="email" name="email"
+                                                   class="form-control form-control-lg"
+                                                   required/>
+                                            <label class="form-label" for="email">Enter your email</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-10 mb-2">
+                                        <div class="form-outline">
+                                            <input type="password" id="password" name="password"
+                                                   class="form-control form-control-lg" required/>
+                                            <label class="form-label" for="password">Enter your password</label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="mt-0 pt-2">
+                                    <button class="w-100 btn btn-lg btn-primary" type="submit">Log in</button>
+                                </div>
+                                <div class="card-footer text-muted text-center">
+                                    New in Library? <a href="{% url 'register' %}">Sign up</a>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+</section>
+{% endblock %}
